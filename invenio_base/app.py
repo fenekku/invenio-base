@@ -35,6 +35,7 @@ def create_app_factory(
     converters=None,
     finalize_app_entry_points=None,
     wsgi_factory=None,
+    urls_builder_factory=None,
     **app_kwargs,
 ):
     """Create a Flask application factory.
@@ -130,6 +131,10 @@ def create_app_factory(
             entry_points=blueprint_entry_points,
             modules=blueprints,
         )
+
+        if urls_builder_factory:
+            # Name discussion - this is shorter and still understandable
+            app.invenio_urls = urls_builder_factory(app, **kwargs)
 
         finalize_app_loader(
             app,

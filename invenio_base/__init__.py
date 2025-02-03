@@ -235,6 +235,7 @@ For further details about the available options run the `help` command:
 """
 
 from .app import create_app_factory, create_cli
+from .urls import invenio_url_for
 from .wsgi import create_wsgi_factory
 
 # Monkey patch Werkzeug 2.1
@@ -262,4 +263,5 @@ __all__ = (
     "create_app_factory",
     "create_cli",
     "create_wsgi_factory",
+    "invenio_url_for",
 )
